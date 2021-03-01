@@ -1,55 +1,146 @@
-<!DOCTYPE HTML>  
+<?php
+
+	if(isset($_POST['submit'])){
+
+		$fname = $_POST['FName'];
+	
+		if($fname == ""){
+			echo "empty";
+		}else{
+			echo $fname;
+		}
+
+		$lname = $_POST['LName'];
+	
+		if($lname == ""){
+			echo "empty";
+		}else{
+			echo $lname;
+		}
+	
+	$email = $_POST['Email'];
+	
+
+	if($email == ""){
+		echo "empty";
+	}else{
+		echo $email;
+	}
+
+	
+	$Username = $_POST['UserName'];
+	
+
+		if($Username == ""){
+			echo "empty";
+		}else{
+			echo $Username;
+		}
+
+
+		$Passward = $_POST['Password'];
+	
+
+		if($Passward== ""){
+			echo "empty";
+		}else{
+			echo $Passward;
+		}
+
+
+		$CPass = $_POST['ConPassword'];
+	
+
+		if($CPass== ""){
+			echo "empty--";
+		}else{
+			echo $Passward;
+		}
+
+
+		if($Passward == $CPass)
+		{
+			echo "Password is secured";
+		}
+        else
+        {
+            echo "Password is not matched";
+        }
+
+
+		$radioVal = $_POST["gender"];
+
+       if($radioVal == "Male")
+       {
+        echo"Gender: Male";
+       }
+       else if ($radioVal == "Female")
+       {
+       	echo("Gender: Female");
+       }
+       else if ($radioVal == "Others")
+       {
+      	echo("Gender: Other");
+      }
+
+
+}
+
+
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
+	<title>REGISTRATION</title>
 </head>
-<body>  
-
-<?php
-// define variables and set to empty values
-$name = $email = $gender = $Phone = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = test_input($_POST["name"]);
-  $email = test_input($_POST["email"]);
-  $Phone = test_input($_POST["Phone"]);
-  $gender = test_input($_POST["gender"]);
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
-
-<h2>PHP Form Validation Example</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name">
-  <br><br>
-  E-mail: <input type="text" name="email">
-  <br><br>
-  Phone: <input type="text" name="Phone">
-  <br><br>
-  Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <input type="radio" name="gender" value="other">Other
-  <br><br>
-  <input type="submit" name="submit" value="Submit">  
-</form>
-
-<?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $Phone;
-echo "<br>";
-echo $gender;
-?>
-
+<body>
+	<form method="POST" action="">
+		<fieldset>
+			<legend> <b>REGISTRATION</b></legend>
+				<table>
+					<tr>
+						<td> FirstName </td>
+						<td> :<input type="text" name="FName"/> 
+						<br/> </td>
+					</tr>
+					<tr>
+						<td> LastName </td>
+						<td> :<input type="text" name="LName"/> 
+						<br/> </td>
+					</tr>
+					<tr>
+						<td> Email </td>
+						<td> :<input type="email" name="Email"/> 
+						<button class="button" title="hint: name@example.com">i</button>
+						<br/> </td>
+					</tr>
+					<tr>
+						<td> User Name </td>
+						<td> :<input type="username" name="UserName"/> 
+						<br/> </td>
+					</tr>
+					<tr>
+						<td> Password </td>
+						<td> :<input type="password" name="Password"/> 
+						<br/> </td>
+					</tr>
+					<tr>
+						<td> Confirm Password </td>
+						<td> :<input type="password" name="ConPassword"/> 
+						<br/> </td>
+					</tr>
+			</table>
+				<fieldset>
+					<legend>Gender</legend>
+					    <input type='radio' name='gender' value='Male'>Male
+            			<input type='radio' name='gender' value='Female'>Female
+            			<input type='radio' name='gender' value='Others'>Others
+				</fieldset>
+			<hr>
+			<input type="reset" name="reset" value="reset">
+			<input type="submit" name="submit" value="submit">
+		</fieldset>
+	</form>
 </body>
 </html>
-
